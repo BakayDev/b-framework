@@ -9,4 +9,5 @@
 *.sln
 *.sw*
 # Composer vendor folder
-vendor
+/vendor
+phpunit.xml
