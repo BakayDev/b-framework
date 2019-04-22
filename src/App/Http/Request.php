@@ -8,7 +8,7 @@ namespace App\Http;
  */
 class Request
 {
-    private $queryParams;
+    private $queryParams = [];
     private $parsedBody;
 
     public function __construct(array $queryParams = [], $parsedBody = null)
@@ -25,11 +25,23 @@ class Request
         return $this->queryParams;
     }
 
+    public function withQueryParams(array $query): self
+    {
+        $this->queryParams = $query;
+        return $this;
+    }
+
     /**
      * @return null | array
      */
     public function getParsedBody()
     {
         return $this->parsedBody;
+    }
+
+    public function withParsedBody($data): self
+    {
+        $this->parsedBody = $data;
+        return $this;
     }
 }
