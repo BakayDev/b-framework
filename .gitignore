@@ -11,3 +11,4 @@
 # Composer vendor folder
 /vendor
 phpunit.xml
+.phpunit.result.cache
