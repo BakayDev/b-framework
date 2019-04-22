@@ -1,16 +1,13 @@
 <?php
 
-use App\Http\Request;
+use App\Http\RequestFactory;
 
 chdir(dirname(__DIR__));
 
 require 'vendor/autoload.php';
 
 # init app
-$request = (new Request())
-    ->withQueryParams($_GET)
-    ->withParsedBody($_POST);
-
+$request = RequestFactory::fromGlobals();
 # add header framework version
 header('B-framework : v-1');
 
