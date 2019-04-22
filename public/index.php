@@ -7,7 +7,7 @@ chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
 # init app
-$request = new Request();
+$request = new Request($_GET, $_POST);
 
 # add header framework version
 header('B-framework : v-1');
