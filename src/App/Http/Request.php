@@ -6,7 +6,7 @@ namespace App\Http;
  * Class Request
  * @package App\Http
  */
-class Request
+class Request implements ServerRequestInterface
 {
     private $queryParams = [];
     private $parsedBody;

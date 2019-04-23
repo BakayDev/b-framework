@@ -6,7 +6,7 @@ namespace App\Http;
  * Class Response
  * @package App\Http
  */
-class Response
+class Response implements ResponseInterface
 {
     private $headers = [];
     private $body;
