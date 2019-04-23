@@ -1,21 +1,29 @@
 <?php
 
 use App\Http\RequestFactory;
+use App\Http\Response;
 
 chdir(dirname(__DIR__));
 
 require 'vendor/autoload.php';
 
 # init app
+
 $request = RequestFactory::fromGlobals();
-# add header framework version
-header('B-framework : v-1');
 
 # action
 
-//get user name from QueryParams
 $userName = $request->getQueryParams()['name'] ?? 'Guest';
 
-echo 'hello ' . $userName . ' from B-framework';
+$response = (new Response('Hello, ' . $userName . ' from B-framework'))
+    ->withHeader('B-framework', 'v-1');
+
+# sending
+
+header('HTTP/1.0' . $response->getStatusCode() . '' . $response->getReasonPhrase());
+foreach ($response->getHeaders() as $name => $value) {
+    header($name . ':' . $value);
+}
+echo $response->getBody();
 
 
